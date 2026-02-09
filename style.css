@@ -1,0 +1,209 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Merriweather', sans-serif;
+}
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('images/bgrnd.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+#endScreen{
+  position: fixed;
+  inset: 0;
+  background: url("images/solution.jpg") center center no-repeat;
+  background-size: contain;
+  background-color: black;
+  display: none;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+
+#intro{
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+#intro video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ή contain αν δεν θες crop */
+}
+
+#intro.fadeOut{
+  animation: fadeOut 0.8s ease forwards;
+}
+
+
+
+.wrapper{
+  padding: 25px;
+  border-radius: 11px;
+  background-color: whitesmoke;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.cards, .card, .view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ /* <!--size--> */
+.cards{      
+  height: 450px;
+  width: 450px;
+  flex-wrap: wrap;   /*διάταξη*/
+  justify-content: space-between;
+}
+.cards .card{
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 5 - 10px);
+  width: calc(100% / 5 - 10px);
+}
+.card.shake{
+  animation: shake 0.35s ease-in-out;
+}
+
+.credit{
+    padding-top: 15px;
+    text-align: right;
+    font-size: 9px;
+}
+
+
+@keyframes shake {
+  0%, 100%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-13px);
+  }
+  40%{
+    transform: translateX(13px);
+  }
+  60%{
+    transform: translateX(-8px);
+  }
+  80%{
+    transform: translateX(8px);
+  }
+}
+.card .view{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 7px;
+  background: white;
+  pointer-events: none;
+  backface-visibility: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.25s linear;
+}
+.card .front-view img{
+  width: 81px;
+}
+.card .back-view img{
+  max-width: 65px;
+}
+.card .back-view{
+  transform: rotateY(-180deg);
+}
+.card.flip .back-view{
+  transform: rotateY(0);
+}
+.card.flip .front-view{
+  transform: rotateY(180deg);
+}
+
+
+
+@keyframes fadeOut{
+  to{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+  .cards{
+    height: 350px;
+    width: 350px;
+  }
+  .card .front-view img{
+    width: 59px;
+  }
+  .card .back-view img{
+    max-width: 50px;
+  }
+}
+
+#musicToggle{
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+#musicToggle:hover{
+  background: rgba(0,0,0,0.8);
+}
+
+
+
+.floating-img {
+  position: fixed;
+  top: 20%;
+  left: -150px;
+  width: 120px;
+  pointer-events: auto; /* ΘΕΛΟΥΜΕ hover */
+  z-index: 9998;
+  animation: flyAcross 4s linear forwards;
+}
+
+.floating-img img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes flyAcross {
+  from {
+    transform: translateX(-200px) translateY(0);
+  }
+  to {
+    transform: translateX(calc(100vw + 200px)) translateY(-100px);
+  }
+}
