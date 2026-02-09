@@ -196,7 +196,7 @@ function spawnFloatingImage() {
 function floatingLoop() {
   spawnFloatingImage();
 
-  const nextTime = Math.random() * 20000; //+ 20000;  20–40s
+  const nextTime = Math.random() * 20000 + 9000; //+ 20000;  20–40s
   setTimeout(floatingLoop, nextTime);
 }
 
@@ -211,5 +211,6 @@ introVideo.onended = () => {
     floatingLoop();
   }, 800);
 };
+
 
 
