@@ -37,6 +37,12 @@ musicToggle.addEventListener("click", (e) => {
 
 container.style.display = "none"; // κρύψε game αρχικά
 
+
+introVideo.addEventListener("click", () => {
+    introVideo.play();
+});
+
+
 introVideo.onended = () => {
     intro.classList.add("fadeOut");
 
@@ -211,6 +217,5 @@ introVideo.onended = () => {
     floatingLoop();
   }, 800);
 };
-
 
 
